@@ -1,0 +1,41 @@
+import cv2
+import numpy as np
+from PIL import ImageGrab
+import pytesseract
+
+# Set the path to the Tesseract executable (change this if necessary)
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+# Set the coordinates for the selected rectangular area
+x, y, width, height = 100, 100, 300, 100
+
+while True:
+    # Capture the screen frame
+    screenshot = ImageGrab.grab()
+
+    # Convert the screenshot to an OpenCV image
+    frame = np.array(screenshot)
+
+    # Extract the selected rectangular area
+    selected_area = frame[y:y+height, x:x+width]
+
+    # Convert the selected area to grayscale
+    gray_image = cv2.cvtColor(selected_area, cv2.COLOR_BGR2GRAY)
+
+    # Apply thresholding to enhance text visibility
+    _, thresholded = cv2.threshold(gray_image, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+
+    # Perform OCR on the thresholded image
+    player_name = pytesseract.image_to_string(thresholded)
+
+    # Display the captured frame and OCR result
+    cv2.imshow("Screen Capture", frame)
+    cv2.imshow("Selected Area", selected_area)
+    print("Detected Player Name:", player_name.strip())
+
+    # Check for the 'q' key to exit the loop
+    if cv2.waitKey(1) == ord('q'):
+        break
+
+# Release resources and close windows
+cv2.destroyAllWindows()
