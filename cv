@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from PIL import ImageGrab
+from PIL import ImageGrabs
 import pytesseract
 
 # Set the path to the Tesseract executable (change this if necessary)
@@ -73,12 +73,12 @@ cv2.destroyAllWindows()
     ) AS T
     pivot
     (
-        max(TotalSCOutstandingAmount) 
+        max(TotalSCOutstandingAmount)
             for LoanRange_SO in (' + @cols_so + ')
     ) AS U
     pivot
     (
-        max(TotalOSAmount) 
+        max(TotalOSAmount)
             for LoanRange_TO in (' + @cols_to + ')
     ) AS V' ;
 
