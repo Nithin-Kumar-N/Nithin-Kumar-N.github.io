@@ -39,3 +39,53 @@ while True:
 
 # Release resources and close windows
 cv2.destroyAllWindows()
+ select @cols_ac = COALESCE(@cols_ac + ',','') 
+        + QUOTENAME(LoanRange_AC), @cols_pd = COALESCE(@cols_pd + ',','') 
+        + QUOTENAME(LoanRange_PD), @cols_sd = COALESCE(@cols_sd + ',','') 
+        + QUOTENAME(LoanRange_SD), @cols_po = COALESCE(@cols_po + ',','') 
+        + QUOTENAME(LoanRange_PO), @cols_so = COALESCE(@cols_so + ',','') 
+        + QUOTENAME(LoanRange_SO), @cols_to = COALESCE(@cols_to + ',','') 
+        + QUOTENAME(LoanRange_TO)
+    from #RangeTable
+
+
+    set @query = N'SELECT ASADivision, ASADistrict, ASARegion, LoanProduct, LoanCategory, ' + @cols_ac +', ' + @cols_pd +', ' + @cols_sd +', ' + @cols_po +', ' + @cols_so +', ' + @cols_to +'
+    from #ResultTable 
+    pivot 
+    (
+        max(Accounts) 
+            for LoanRange_AC in (' + @cols_ac + ')
+    ) AS Q
+    pivot
+    (
+        max(TotalPrinDisbAmount) 
+            for LoanRange_PD in (' + @cols_pd + ')
+    ) AS R
+    pivot
+    (
+        max(TotalSCDisbAmount) 
+            for LoanRange_SD in (' + @cols_sd + ')
+    ) AS S
+    pivot
+    (
+        max(TotalPrinOSAmount) 
+            for LoanRange_PO in (' + @cols_po + ')
+    ) AS T
+    pivot
+    (
+        max(TotalSCOutstandingAmount) 
+            for LoanRange_SO in (' + @cols_so + ')
+    ) AS U
+    pivot
+    (
+        max(TotalOSAmount) 
+            for LoanRange_TO in (' + @cols_to + ')
+    ) AS V' ;
+
+    exec sp_executesql @query ;
+Output
+Output
+
+I want to ensure that any missing data resulting in NULL values during the pivot operation is instead represented as 0 in the output. How can I achieve this modification in the T-SQL procedure?
+
+Note: The data is Dynamic
