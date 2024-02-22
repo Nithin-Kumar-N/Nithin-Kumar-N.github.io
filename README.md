@@ -24,5 +24,5 @@ Here are some of the key projects featured in my portfolio:
 
 Feel free to reach out to me if you have any questions or would like to collaborate:
 
-- Email: [your-email@example.com]
-- LinkedIn: [Your LinkedIn Profile URL]
+- Email: [nithinkumarlife@gmail.com]
+- LinkedIn: [https://www.linkedin.com/in/nithin-kumar-n/]
