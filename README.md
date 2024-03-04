@@ -15,7 +15,7 @@ Here are some of the key projects featured in my portfolio:
    - Technologies Used: [List of technologies used]
    - [Link to project/demo]
 
-2. **Project Name 2**
+2. **Problem Solving**
    - Description: [Brief description of the project]
    - Technologies Used: [List of technologies used]
    - [Link to project/demo]
