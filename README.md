@@ -10,7 +10,7 @@ I am a passionate and dedicated software engineer with a focus on web developmen
 
 Here are some of the key projects featured in my portfolio:
 
-1. **Project Name 1**
+1. **Movie Recommendation**
    - Description: [Brief description of the project]
    - Technologies Used: [List of technologies used]
    - [Link to project/demo]
