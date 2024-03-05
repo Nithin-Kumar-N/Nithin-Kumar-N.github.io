@@ -1,62 +1,67 @@
-document.addEventListener("DOMContentLoaded", function() {
-    loadProjects();
-    
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      validateForm();
-    });
-  
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-  
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
+$(document).ready(function(){
+  $(window).scroll(function(){
+      // sticky navbar on scroll script
+      if(this.scrollY > 20){
+          $('.navbar').addClass("sticky");
+      }else{
+          $('.navbar').removeClass("sticky");
+      }
+      
+      // scroll-up button show/hide script
+      if(this.scrollY > 500){
+          $('.scroll-up-btn').addClass("show");
+      }else{
+          $('.scroll-up-btn').removeClass("show");
+      }
   });
-  
-  function loadProjects() {
-    fetch('projects.json')
-      .then(response => response.json())
-      .then(data => {
-        const projectsList = document.getElementById("projectsList");
-        data.forEach(project => {
-          const projectDiv = document.createElement("div");
-          projectDiv.classList.add("project");
-          projectDiv.innerHTML = `
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-          `;
-          projectsList.appendChild(projectDiv);
-        });
-      })
-      .catch(error => console.error('Error loading projects:', error));
-  }
-  
-  function validateForm() {
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-  
-    if (name === "" || email === "" || message === "") {
-      alert("Please fill in all fields.");
-      return;
-    }
-  
-    if (!isValidEmail(email)) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-  
-    // If all validations pass, you can proceed with form submission, for example:
-    // document.getElementById("contactForm").submit();
-  }
-  
-  function isValidEmail(email) {
-    // Simple email validation using a regular expression
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
-  
+  // slide-up script
+  $('.scroll-up-btn').click(function(){
+      $('html').animate({scrollTop: 0});
+      // removing smooth scroll on slide-up button click
+      $('html').css("scrollBehavior", "auto");
+  });
+  $('.navbar .menu li a').click(function(){
+      // applying again smooth scroll on menu items click
+      $('html').css("scrollBehavior", "smooth");
+  });
+  // toggle menu/navbar script
+  $('.menu-btn').click(function(){
+      $('.navbar .menu').toggleClass("active");
+      $('.menu-btn i').toggleClass("active");
+  });
+  // typing text animation script
+  var typed = new Typed(".typing", {
+      strings: ["Coder", "Developer", "Blogger", "Designer", "Freelancer"],
+      typeSpeed: 100,
+      backSpeed: 60,
+      loop: true
+  });
+  var typed = new Typed(".typing-2", {
+      strings: ["Coder", "Developer", "Blogger", "Designer", "Freelancer"],
+      typeSpeed: 100,
+      backSpeed: 60,
+      loop: true
+  });
+  // owl carousel script
+  $('.carousel').owlCarousel({
+      margin: 20,
+      loop: true,
+      autoplay: true,
+      autoplayTimeOut: 2000,
+      autoplayHoverPause: true,
+      responsive: {
+          0:{
+              items: 1,
+              nav: false
+          },
+          600:{
+              items: 2,
+              nav: false
+          },
+          1000:{
+              items: 3,
+              nav: false
+          }
+      }
+  });
+});
