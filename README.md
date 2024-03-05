@@ -18,18 +18,6 @@ You can check out the website hosted using GitHub Pages at- https://nithin-kumar
 <<<<<<< HEAD
 <br>
 
-=======
-1. **Movie Recommendation**
-   - Description: [Brief description of the project]
-   - Technologies Used: [List of technologies used]
-   - [Link to project/demo]
-
-2. **Problem Solving**
-   - Description: [Brief description of the project]
-   - Technologies Used: [List of technologies used]
-   - [Link to project/demo]
->>>>>>> da6716da9067b21198df7b842a499ef9e9870267
-
 
 # 🌈 Features
 
