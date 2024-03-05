@@ -15,8 +15,20 @@ You can check out the website hosted using GitHub Pages at- https://nithin-kumar
   <img src="https://img.icons8.com/color/96/000000/javascript.png" alt="JavaScript (JS)" style="margin: 10px;">
   <img src="https://img.icons8.com/color/96/000000/visual-studio-code-2019.png" alt="VS Code" style="margin: 10px;">
 
+<<<<<<< HEAD
 <br>
 
+=======
+1. **Movie Recommendation**
+   - Description: [Brief description of the project]
+   - Technologies Used: [List of technologies used]
+   - [Link to project/demo]
+
+2. **Problem Solving**
+   - Description: [Brief description of the project]
+   - Technologies Used: [List of technologies used]
+   - [Link to project/demo]
+>>>>>>> da6716da9067b21198df7b842a499ef9e9870267
 
 
 # 🌈 Features
